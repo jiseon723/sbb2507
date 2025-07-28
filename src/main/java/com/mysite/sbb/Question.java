@@ -23,6 +23,6 @@ public class Question {
 
     private LocalDateTime createDate;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) // 주인을 지정, 질문을 삭제하면 안의 답변도 같이 삭제하겠다.
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER) // 주인을 지정, 질문을 삭제하면 안의 답변도 같이 삭제하겠다.
     private List<Answer> answerList;
 }
