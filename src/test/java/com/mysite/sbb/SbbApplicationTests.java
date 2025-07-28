@@ -1,13 +1,16 @@
 package com.mysite.sbb;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class SbbApplicationTests {
@@ -37,5 +40,44 @@ class SbbApplicationTests {
 
 		Question q = all.get(0);
 		assertEquals("sbb가 무엇인가요?", q.getSubject());
+	}
+
+	@Test
+	void testJpa3 () {
+		Optional<Question> oq = this.questionRepository.findById(1); //찾기를 할 때 있다, 없다를 표현할때 Optional 사용
+
+		if(oq.isPresent()) { //확인
+			Question q = oq.get();
+			assertEquals("sbb가 무엇인가요?", q.getSubject());
+		}
+	}
+
+	@Test
+	void testJpa4 () {
+		Question q = this.questionRepository.findBySubject("sbb가 무엇인가요?");
+		assertEquals(1, q.getId());
+	}
+
+	@Test
+	void testJpa5 () {
+		Question q = this.questionRepository.findBySubjectAndContent(
+				"sbb가 무엇인가요?", "sbb에 대해서 알고 싶습니다.");
+		assertEquals(1, q.getId());
+	}
+
+	@Test
+	void testJpa6 () {
+		List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
+		Question q = qList.get(0);
+		assertEquals("sbb가 무엇인가요?", q.getSubject());
+	}
+
+	@Test
+	void testJpa7 () {
+		Optional<Question> oq = this.questionRepository.findById(1);
+		assertTrue(oq.isPresent());
+		Question q = oq.get();
+		q.setSubject("수정된 제목");
+		this.questionRepository.save(q);
 	}
 }
