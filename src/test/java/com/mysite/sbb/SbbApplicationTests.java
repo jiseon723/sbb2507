@@ -39,7 +39,7 @@ class SbbApplicationTests {
 
 //질문 데이터 조회
 	@Test
-	void testJpa2 () {
+	void testJpa02 () {
 		List<Question> all = this.questionRepository.findAll(); // question 데이터베이스에 있는 모든 Question 객체를 변수 all에 저장
 		assertEquals(2, all.size()); //all 리스트의 사이즈가 2인지 확인
 
@@ -49,7 +49,7 @@ class SbbApplicationTests {
 
 //findById 메서드
 	@Test
-	void testJpa3 () {
+	void testJpa03 () {
 		//question 데이터베이스에서 아이디 1을 가진 Question 객체가 있는지 확인하고 그 값을 변수 oq에 저장
 		Optional<Question> oq = this.questionRepository.findById(1); //찾기를 할 때 있다, 없다를 표현할때 Optional 사용
 
@@ -61,7 +61,7 @@ class SbbApplicationTests {
 
 //findBySubject 메서드
 	@Test
-	void testJpa4 () {
+	void testJpa04 () {
 		//question 데이터베이스에서 검색한 Subject와 일치하는 객체를 찾아 변수 q에 저장
 		Question q = this.questionRepository.findBySubject("sbb가 무엇인가요?");
 		assertEquals(1, q.getId()); //q의 아이디를 가져와 1인지 확인
@@ -69,7 +69,7 @@ class SbbApplicationTests {
 
 //findBySubjectAndContent 메서드
 	@Test
-	void testJpa5 () {
+	void testJpa05 () {
 		//question 데이터베이스에서 검색한 Subject와 Content가 일치하는 객체를 찾아 변수 q에 저장
 		Question q = this.questionRepository.findBySubjectAndContent(
 				"sbb가 무엇인가요?", "sbb에 대해서 알고 싶습니다.");
@@ -78,7 +78,7 @@ class SbbApplicationTests {
 
 //findBySubjectLike 메서드
 	@Test
-	void testJpa6 () {
+	void testJpa06 () {
 		//question 데이터베이스에서 subject가 "sbb"로 시작하는 모든 Question 객체를 qList에 저장
 		List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
 		Question q = qList.get(0); // qList에서 첫번째 객체를 사용하는 Question 변수 q를 생성
@@ -87,7 +87,7 @@ class SbbApplicationTests {
 
 //질문 데이터 수정
 	@Test
-	void testJpa7 () {
+	void testJpa07 () {
 		// question 데이터베이스에서 아이디 1의 값을 가진 객체를 변수 oq에 저장
 		Optional<Question> oq = this.questionRepository.findById(1);
 		assertTrue(oq.isPresent()); // oq에 값이 존재한다면 true 존재하지 않는다면 AssertionError 발생
@@ -98,7 +98,7 @@ class SbbApplicationTests {
 
 //질문 데이터 삭제
 	@Test
-	void testJpa8 () {
+	void testJpa08 () {
 		//question 데이터베이스의 값이 2개인지 확인
 		assertEquals(2, this.questionRepository.count());
 		//question 데이터 베이스에서 1번 아이디를 가진 Question 객체를 담은 변수 oq를 생성
@@ -112,7 +112,7 @@ class SbbApplicationTests {
 
 //답변 데이터 저장
 	@Test
-	void testJpa9 () {
+	void testJpa09 () {
 		//question 데이터 베이스에서 2번 아이디를 가진 Question 객체를 담은 변수 oq를 생성
 		Optional<Question> oq = this.questionRepository.findById(2);
 		assertTrue(oq.isPresent()); // oq에 값이 있는지 확인
