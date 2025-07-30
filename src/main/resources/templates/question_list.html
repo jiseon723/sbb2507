@@ -5,22 +5,22 @@
     <title>question</title>
 </head>
 <body>
-<h2>질문 목록</h2>
-<table border="1">
-    <thead>
-        <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>생성일시</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="q : ${questionList}">
-            <td th:text="${q.id}"></td>
-            <td th:text="${q.subject}"></td>
-            <td th:text="${q.createDate}"></td>
-        </tr>
-    </tbody>
-</table>
+    <h2>질문 목록</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>생성일시</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="q : ${questionList}">
+                <td th:text="${q.id}"></td>
+                <td th:text="${q.subject}"></td>
+                <td th:text="${q.createDate}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
