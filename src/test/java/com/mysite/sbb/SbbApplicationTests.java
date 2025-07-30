@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -138,6 +139,7 @@ class SbbApplicationTests {
 //답변 데이터를 통해 질문 데이터 찾기, 질문 데이터를 통해 답변 데이터 찾기
 	@Transactional
 	@Test
+	@Rollback(false)
 	void testJpa11 () {
 		// question 데이터베이스에서 아이디 2를 가진 객체를 Optional로 감싸 변수 oq에 저장
 		Optional<Question> oq = this.questionRepository.findById(2);
