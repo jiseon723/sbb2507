@@ -10,6 +10,14 @@
 <h3>[[${question.subject}]]</h3>
 <div>[[${question.content}]]</div>
 
+<h5 th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
+
+<div>
+    <ul>
+        <li th:each="answer : ${question.answerList}" th:text="${answer.content}"></li>
+    </ul>
+</div>
+
 <!--action -> 어디 컨트롤러로 보낼건지 선택 //post 등록, get 주소이동-->
 <form th:action="@{|/answer/create/${question.id}|}" method="post">
 <!--textarea 긴 글 작성, rows-> 몇줄-->
