@@ -10,9 +10,9 @@
 <h3>[[${question.subject}]]</h3>
 <div>[[${question.content}]]</div>
 
-//action -> 어디 컨트롤러로 보낼건지 선택 //post 등록, get 주소이동
+<!--action -> 어디 컨트롤러로 보낼건지 선택 //post 등록, get 주소이동-->
 <form th:action="@{|/answer/create/${question.id}|}" method="post">
-    //textarea 긴 글 작성, rows-> 몇줄
+<!--textarea 긴 글 작성, rows-> 몇줄-->
     <textarea name="content" id="content" rows="15"></textarea>
     <input type="submit" value="답변등록">
 </form>
