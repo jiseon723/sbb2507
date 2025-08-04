@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
 </head>
 <body>
+<!-- 네비게이션바 -->
+    <nav th:replace="~{navbar :: navbarFragment}"></nav>
 <!--기본 템플릿 안에 삽입된 내용 start-->
     <th:block layout:fragment="content"></th:block>
 <!--기본 템플릿 안에 삽입된 내용 end-->
+    <!-- Bootstrap JS -->
+    <script th:src="@{/bootstrap.min.js}"></script>
 </body>
 </html>
