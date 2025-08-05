@@ -41,6 +41,9 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	//Validation  입력한 데이터를 검증
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 }
 
 tasks.named('test') {
