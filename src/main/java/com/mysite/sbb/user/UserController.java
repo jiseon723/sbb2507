@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final UserController userController;
+    private final UserService userService;
 
     @GetMapping("/signup")
     public String signup() {
