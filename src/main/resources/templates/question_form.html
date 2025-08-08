@@ -3,7 +3,10 @@
 
     <h5 class="my-3 border-bottom pb-2">질문등록</h5>
 
-    <form th:action="@{/question/create}" th:object="${questionForm}" method="post">
+<!--  액션을 삭제했기 때문에 토큰을 수동으로 넣어줘야한다.  -->
+    <form th:object="${questionForm}" method="post">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
       <div th:replace="~{form_errors :: formErrorsFragment}"></div>
 
       <div class="mb-3">
@@ -15,6 +18,7 @@
         <label for="content" class="form-label">내용</label>
         <textarea th:field="*{content}" class="form-control" rows="10" required maxlength="3000"></textarea>
       </div>
+
       <input type="submit" value="저장하기" class="btn btn-primary my-2">
     </form>
   </div>

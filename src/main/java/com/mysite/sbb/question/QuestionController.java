@@ -69,6 +69,8 @@ public class QuestionController {
         questionForm.setSubject(question.getSubject());
         questionForm.setContent(question.getContent());
 
+        //todo : 수정기능구현
+
         return "question_form";
     }
 }
