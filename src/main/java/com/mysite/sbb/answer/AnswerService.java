@@ -25,13 +25,22 @@ public class AnswerService {
     }
 
     public Answer getAnswer(Integer id) {
-        Optional<Answer> oa = this.answerRepository.findById(id);
+        Optional<Answer> answer = this.answerRepository.findById(id);
 
-        if (oa.isPresent()) {
-            return oa.get();
+        if (answer.isPresent()) {
+            return answer.get();
         } else {
             throw new DataNotFoundException("answer not found");
         }
     }
 
+    public void modify(Answer answer, String content) {
+        answer.setContent(content);
+        answer.setModifyDate(LocalDateTime.now());
+        this.answerRepository.save(answer);
+    }
+
+    public void delete(Answer answer) {
+        this.answerRepository.delete(answer);
+    }
 }
