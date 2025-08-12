@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 <!-- 네비게이션바 -->
@@ -13,7 +14,10 @@
 <!--기본 템플릿 안에 삽입된 내용 start-->
     <th:block layout:fragment="content"></th:block>
 <!--기본 템플릿 안에 삽입된 내용 end-->
-    <!-- Bootstrap JS -->
-    <script th:src="@{/bootstrap.min.js}"></script>
+    <script>
+        $('body').click(function() {
+            console.log('hi');
+        })
+    </script>
 </body>
 </html>
