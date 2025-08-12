@@ -119,8 +119,8 @@ public class QuestionController {
 
         Question votedQuestion = this.questionService.getQuestion(id);
 
-        Integer voteCount = votedQuestion.getVoter().size();
+        Integer votedCount = votedQuestion.getVoter().size();
 
-        return voteCount.toString();
+        return votedCount.toString();
     }
 }

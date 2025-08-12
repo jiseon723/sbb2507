@@ -74,12 +74,10 @@
                 </div>
 
                 <div class="my-3">
-                    <a onclick="return confirm('정말 추천하시겠습니까?')"
-                       class="recommend btn btn-sm btn-outline-secondary"
-                       th:href="@{|/answer/vote/${answer.id}|}">
+                    <a class="recommend_answer recommend btn btn-sm btn-outline-secondary">
+                        <input type="hidden" name="answer_id" th:value="${answer.id}">
                         추천
-                        <span class="badge rounded-pill bg-success"
-                              th:text="${#lists.size(answer.voter)}"></span>
+                        <span class="recommend_answer_count badge rounded-pill bg-success" th:text="${#lists.size(answer.voter)}"></span>
                     </a>
 
                     <a th:href="@{|/answer/modify/${answer.id}|}"
@@ -108,6 +106,7 @@
 </html>
 
 <script th:inline="javascript">
+    //질문
     $('#recommend_question').on('click', function() {
         const question_id = [[${question.id}]];
         //const: (데이터 타입) 데이터 가져올 때 사용. 변수 question_id에 저장했다.
@@ -120,6 +119,30 @@
                 success: function(response) {
                 //요청이 성공했을 때 실행되는 함수
                     $("#recommend_question_count").text(response);
+                    console.log("응답 : " + response);
+                },
+
+                error: function(xhr, status, error) {
+                //요청이 실패했을 때 실행되는 함수
+                    console.log("에러 : " + error);
+                }
+            });
+        }
+    });
+
+    //답변
+    $('.recommend_answer').on('click', function() {
+        const _this = $(this);
+        const answer_id = _this.find('input[name=answer_id]').val();
+
+        if(confirm('정말 추천하시겠습니까?')) {
+            $.ajax({
+                url: "/answer/vote/" + answer_id, //요청 보낼 서버 URL
+                type: "GET",           //요청 매서드 ("GET", "PUT", "POST", "DELETE") 등
+
+                success: function(response) {
+                //요청이 성공했을 때 실행되는 함수
+                    $(".recommend_answer_count").text(response);
                     console.log("응답 : " + response);
                 },
 
