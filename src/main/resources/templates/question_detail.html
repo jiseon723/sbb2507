@@ -117,11 +117,11 @@
             url: "/question/vote/" + question_id, <!--요청 보낼 서버 URL-->
             type: "GET", <!--요청 매서드 ("GET", "PUT", "POST", "DELETE")-->
             success: function(response) {
-                console.log("question_id : " + question_id)
-                console.log(response)
+                console.log("question_id : " + question_id);
+                console.log(response);
             },
             error: function(xhr, status, error) {
-                console.log("에러 : " + error)
+                console.log("에러 : " + error);
             }
         });
     });
